@@ -1,0 +1,85 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX program = xelatex
+
+\documentclass[doctor]{hnuthesis}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{algorithmicx,algpseudocode}
+\usepackage{float}
+
+% 学校代码
+\hnucode{10534}
+% 学校名称
+\hnuname{湖南科技大学}
+\enhnuname{Hunan University of Science and Technology}
+% 学位类别
+\degree{博士}
+% 中图分类号
+\clc{TP391}         
+% 密级       
+\secrettext{公开}           
+
+% 标题
+\title{工业互联网环境下生产服务与配送优化方法研究}
+\entitle{ Research on Optimization Methods of Production Service and Distribution in Industrial Internet Environment}
+% 作者
+\author{彭高贤}
+\enauthor{GaoXian Peng}
+% 学号
+\authorid{21300503003}      
+% 学院
+\college{计算机科学与工程学院}
+% 专业
+\major{软件工程} 
+\enmajor{Software Engineering}
+%学士学位获得学校，年份
+% \enbachelor{B.E.~(Hunan University)201x}
+% \enmaster{M.S.~(Hunan University)2020}
+% \endoctor{Master of engineering}
+% 研究方向
+\workon{智能制造}
+% 导师
+\supervisor{文一凭\ 教授}
+\ensupervisor{Professor YiPing Wen}
+% 论文提交、答辩日期
+\submitdate{2025年3月}
+\defensedate{2025年3月}
+\endate{March, 2025}
+% 答辩委员会主席
+\chair{待定}
+
+\begin{document}
+% 封面、原创性声明
+\maketitle
+
+% 摘要
+\input{chapters/abstract}
+% 目录
+\tableofcontents
+% 插图附表索引
+\begingroup
+    \renewcommand*{\addvspace}[1]{}
+        \phantomsection
+        \listoffigures
+        \newpage
+
+        \phantomsection
+        \listoftables
+        \newpage
+\endgroup
+
+% 正文章节
+\mainmatter
+\input{chapters/ch1}
+\input{chapters/ch2}
+\input{chapters/summary}
+\bibliography{references}
+
+\appendix
+\input{chapters/publications}
+\input{chapters/projects}
+
+\backmatter
+\input{chapters/acknowledgements}
+
+\end{document}
