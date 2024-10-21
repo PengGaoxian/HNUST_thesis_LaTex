@@ -140,7 +140,7 @@
     % 定义命令\hnu@thesisname，用于存储博士学位论文的名称
     \newcommand\hnu@thesisname{博士学位论文}%
     % 定义命令\hnu@yemeiname，用于存储博士学位论文的中文名称，显示在页眉中 
-    \newcommand\hnu@yemeiname{博士学位论文}% TODO
+    \newcommand\hnu@yemeiname{\hnu@hnuname 博士学位论文}% TODO
 \fi
 
 % 表格：
@@ -215,7 +215,8 @@
 % 定义自定义的页眉样式 hnu@headings
 \fancypagestyle{hnu@headings}{%
   \fancyhf{}%                                       % 清空默认的页眉页脚设置
-  \fancyhead[CE]{\setfontsize{9pt}\hnu@title}%      % 左页的中央页眉内容为论文标题，字号9pt
+%   \fancyhead[CE]{\setfontsize{9pt}\hnu@title}%      % 左页的中央页眉内容为论文标题，字号9pt
+  \fancyhead[CE]{\setfontsize{9pt}\leftmark}%      % 左页的中央页眉内容为论文章名称，字号9pt
   \fancyhead[CO]{\setfontsize{9pt}\hnu@yemeiname}   % 右页的中央页眉内容为yemeiname，字号9pt
   \fancyfoot[C]{\setfontsize{9pt}\thepage}          % 页脚中央显示页码，字号9pt
   \fancyheadoffset[LO,LE]{3mm}                      % 左侧页眉（LO：左侧页眉奇数页，LE：左侧页眉偶数页）向右偏移量为3mm
@@ -237,8 +238,8 @@
 \fancypagestyle{hnu@notation}{\fancyfoot{}}
 % 设置文档的默认页眉样式为hnu@headings
 \pagestyle{hnu@headings}
-% 使用\patchcmd修改\chaptermark的行为，将原来章节标题#1替换为\spacetitle{#1}，用于调整章节标题的间距
-\patchcmd\chaptermark{#1}{\protect\spacetitle{#1}}{}{}
+% 重定义chaptermark命令，使得章节标题可以正确显示在页眉中
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 % 重定义\cleardoublepage命令，如果文档是双面打印，并且当前页为偶数页，则插入空白页，使得下一章从奇数页开始
 \renewcommand*{\cleardoublepage}{
     \clearpage  % 结束当前页
@@ -589,7 +590,6 @@
     \thispagestyle{plain} % 设定当前页面样式为plain，即无页眉页脚的样式
     \pagenumbering{gobble}  % 禁止页码显示
     \setcounter{page}{1}    % 设置当前页码为1
-    \addcontentsline{toc}{chapter}{学位论文原创性声明和学位论文版权使用授权书}  % 将该页面标题添加到目录中，层次为章级别
     \setfontsize{12.5pt}[20pt]  % 设置正文字体为12pt，行距为20pt
     \vspace*{-0.15cm} % 调整页面上方的垂直间距
     \begin{center}
@@ -631,15 +631,18 @@
     \hnu@chapter{\hnu@abstractname}%  % 调用自定义的hnu@chapter命令，插入“摘要”标题
     \addcontentsline{toc}{chapter}{\hnu@abstractname} % 将“摘要”标题添加到目录中，作为章级别
     \setcounter{page}{1}  % 设置当前页码为1
+    \thispagestyle{empty}   % 清楚当前页面的页眉和页脚
   }{}
 
 % 定义英文摘要环境
 \newenvironment{enabstract}{%
+    \cleardoublepage    % 确保英文摘要也从一个新页开始
     \begingroup % 开始一个组，限制字体设置的作用范围
         \ctexset{chapter/format=\centering\rmfamily\bfseries\setfontsize{18pt}}%  % 设置英文摘要标题的字体为18pt，加粗，居中，使用衬线字体
         \hnu@chapter[Abstract]{\hnu@enabstractname}% % 插入“Abstract”标题
     \endgroup % 结束组
     \addcontentsline{toc}{chapter}{\hnu@enabstractname} % 将“Abstract”标题添加到目录中，作为章级别
+    \thispagestyle{empty}
   }{}
 
 % 定义总结与展望环境
