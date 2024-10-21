@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.2.1)  21 OCT 2024 13:08
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2023.2.1)  21 OCT 2024 13:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1051,7 +1051,8 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box89
 \@float@everytoks=\toks49
 \@floatcapt=\box90
-) (./main.aux)
+)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
@@ -1075,7 +1076,7 @@ LaTeX Font Info:    ... okay on input line 46.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 46.
 LaTeX Font Info:    ... okay on input line 46.
 Package hyperref Info: Link coloring OFF on input line 46.
- (c:/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
+(c:/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (c:/texlive/2022/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
@@ -1087,10 +1088,12 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 46.
 LaTeX Info: Redefining \pageref on input line 46.
 LaTeX Info: Redefining \nameref on input line 46.
- (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -1332,15 +1335,14 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \hskip 12.04486pt
 (hyperref)                replaced by space on input line 53.
 
-(./main.toc)
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- [1
+[1
 
 
 
-] (./main.lof)
+]
 \tf@lof=\write6
 \openout6 = `main.lof'.
 
@@ -1348,7 +1350,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 
 
-] (./main.lot)
+]
 \tf@lot=\write7
 \openout7 = `main.lot'.
 
@@ -1369,11 +1371,20 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 ]
 第2章
+
+LaTeX Warning: Reference `fig:demo' on page 2 undefined on input line 9.
+
 File: figures/hnu-logo.png Graphic file (type bmp)
 <figures/hnu-logo.png>
+
+LaTeX Warning: Reference `table:demo' on page 2 undefined on input line 18.
+
 [2
 
 ]
+
+LaTeX Warning: Reference `eq:foo' on page 3 undefined on input line 49.
+
 
 Package natbib Warning: Citation `he2016deep' on page 3 undefined on input line 72.
 
@@ -1410,14 +1421,26 @@ Package natbib Warning: There were undefined citations.
 
 
 ] (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1D69D56E3FBD7835A4AB64564E137725;2253.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  1D69D56E3FBD7835A4AB64564E137725;2253.
  ) 
 Here is how much of TeX's memory you used:
- 36611 strings out of 476179
- 778364 string characters out of 5813073
- 1104779 words of memory out of 5000000
- 56661 multiletter control sequences out of 15000+600000
+ 36596 strings out of 476179
+ 778230 string characters out of 5813073
+ 1101196 words of memory out of 5000000
+ 56658 multiletter control sequences out of 15000+600000
  488285 words of font info for 188 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  115i,14n,118p,2567b,982s stack positions out of 10000i,1000n,20000p,200000b,200000s
