@@ -482,22 +482,22 @@
 \newcommand\make@cntitle@first{%
     \begin{titlepage}%  %开始封面页环境
         \phantomsection  % 创建一个标记点
-        \addcontentsline{toc}{chapter}{封面}  % 将"封面"添加到目录中
+        \pdfbookmark[0]{封面}{titlepage}
 
         % 使用TikZ在页面的左上角绘制内容，调整位置
         \tikz[remember picture,overlay]%
           \node [xshift=2.5cm,yshift=-2.5cm] at (current page.north west)%
             [below right,align=left] {%
                 \newlength{\@tw} % 定义长度变量\@tw
-                \setlength{\@tw}{55pt}  % 设置\@tw的值为55pt
+                \setlength{\@tw}{75pt}  % 设置\@tw的值为75pt
                 \newlength{\@cw}  % 定义长度变量\@cw
-                \setlength{\@cw}{3.2cm} % 设置\@cw的值为3.2cm
+                \setlength{\@cw}{3cm} % 设置\@cw的值为3cm
                 \setfontsize{12.5pt}% % 设置字号为12.5pt
                 % 创建一个表格，用于显示密级和中图分类号
-                \begin{tabularx}{\linewidth}{lrr}%
-                    \makebox[9cm][c]{\qquad} &  % 使用\makebox创建一个宽度为9cm空格
+                \begin{tabularx}{\linewidth}{lrl}%
+                    \makebox[8.5cm][c]{\qquad} &  % 使用\makebox创建一个宽度为8.5cm空格
                     \makebox[\@tw][s]{\sffamily\textbf{密级：}} & \linetext{\@cw}{c}{\hnu@secrettext} \\% % 显示“密级：”，并使用linetext命令生成带下划线的内容
-                    \makebox[9cm][c]{\qquad} &  % 使用\makebox创建一个宽度为9cm空格
+                    \makebox[8.5cm][c]{\qquad} &  % 使用\makebox创建一个宽度为8.5cm空格
                     \makebox[\@tw][s]{\sffamily\textbf{中图分类号：}} & \linetext{\@cw}{c}{\hnu@clc} \\%  % 显示“中图分类号：”，并使用linetext命令生成带下划线的内容
                 \end{tabularx}
             };%
@@ -561,7 +561,7 @@
 \newcommand\make@entitle{%
     \begin{titlepage}%
         \phantomsection  % 创建一个标记点
-        \addcontentsline{toc}{chapter}{Title Page}  % 将"Title Page"添加到目录中
+        \pdfbookmark[0]{Title Page}{entitlepage}
 
         \vpostext{3.9cm}{\setfontsize{15pt}{A Dissertation Submitted for the Doctor Degree}}%
         \vpostext{5.9cm}{\setfontsize{22pt}\textbf{\hnu@entitle}}%
@@ -598,7 +598,7 @@
 \newcommand\make@statement{
     \begin{titlepage}% % 开始封面页环境
         \phantomsection  % 创建一个标记点
-        \addcontentsline{toc}{chapter}{原创性声明}  % 将"原创性声明"添加到目录中
+        \pdfbookmark[0]{原创性声明}{statement}
 
         \newgeometry{left=3.3cm,right=3.3cm,top=3.5cm, bottom=3cm}  % 设置页面边距
         \thispagestyle{plain} % 设定当前页面样式为plain，即无页眉页脚的样式
@@ -643,10 +643,10 @@
     \cleardoublepage  % 插入双页清除符号，确保摘要从奇数页开始
     \pagenumbering{roman} % 使用罗马数字页码
     \hnu@chapter{\hnu@abstractname}%  % 调用自定义的hnu@chapter命令，插入“摘要”标题
-    % \addcontentsline{toc}{chapter}{\hnu@abstractname} % 将“摘要”标题添加到目录中，作为章级别
+    \addtocontents{toc}{\protect\contentsline{chapter}{\hnu@abstractname}{\thepage}{}}% 只添加到目录
     \setcounter{page}{1}  % 设置当前页码为1
-    \thispagestyle{empty}   % 清楚当前页面的页眉和页脚
-  }{}
+    \thispagestyle{empty}   % 清除当前页面的页眉和页脚
+}{}
 
 % 定义英文摘要环境
 \newenvironment{enabstract}{%
@@ -655,9 +655,9 @@
         \ctexset{chapter/format=\centering\rmfamily\bfseries\setfontsize{18pt}}%  % 设置英文摘要标题的字体为18pt，加粗，居中，使用衬线字体
         \hnu@chapter[Abstract]{\hnu@enabstractname}% % 插入“Abstract”标题
     \endgroup % 结束组
-    % \addcontentsline{toc}{chapter}{\hnu@enabstractname} % 将“Abstract”标题添加到目录中，作为章级别
+    \addtocontents{toc}{\protect\contentsline{chapter}{\hnu@enabstractname}{\thepage}{}}% 只添加到目录
     \thispagestyle{empty}
-  }{}
+}{}
 
 % 定义总结与展望环境
 \newenvironment{summary}{%
