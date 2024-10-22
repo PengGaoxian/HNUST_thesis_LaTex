@@ -430,16 +430,21 @@
         footskip=0.8cm    % 页脚与正文的距离为0.8cm
     }
     \pagenumbering{gobble}  % 禁用页码显示
-    \pdfbookmark[0]{封面}{titlepage}  % 为封面页创建PDF书签，层级为0，标题为“封面”
+
+    % \pdfbookmark[0]{封面}{titlepage}  % 为封面页创建PDF书签，层级为0，标题为“封面”
     \make@cntitle@first % 生成封面第一部分
+    \clearpage  % 结束当前页 
+
+    \make@entitle   % 生成英文封面
+    % \pdfbookmark[0]{Title page}{entitlepage} % 为英文封面创建PDF书签，层级为0，标题为“Title page”，当使用cleardoublepage时，该代码会在上一页生成书签
     \clearpage  % 结束当前页
-    \pdfbookmark[0]{Title page}{entitlepage}  % 为英文封面创建PDF书签，层级为0，标题为“Title page”
-    \make@entitle % 生成英文封面
-    \clearpage  % 结束当前页
+
     \make@cntitle@second  % 生成中文封面第二部分
+    \clearpage  % 结束当前页
+
     \restoregeometry  % 恢复默认页面边距设置
-    \pdfbookmark[0]{原创性声明}{statement}  % 为原创性声明创建PDF书签，标题为“原创性声明”
     \make@statement % 生成原创性声明页面
+    % \pdfbookmark[0]{原创性声明}{statement}  % 为原创性声明创建PDF书签，标题为“原创性声明”
 }
 
 % 定义新命令 \hnu@supervisorline，生成导师信息行
@@ -476,6 +481,9 @@
 % 定义自定义命令make@cntitle@first，生成中文封面的第一部分
 \newcommand\make@cntitle@first{%
     \begin{titlepage}%  %开始封面页环境
+        \phantomsection  % 创建一个标记点
+        \addcontentsline{toc}{chapter}{封面}  % 将"封面"添加到目录中
+
         % 使用TikZ在页面的左上角绘制内容，调整位置
         \tikz[remember picture,overlay]%
           \node [xshift=2.5cm,yshift=-2.5cm] at (current page.north west)%
@@ -552,6 +560,9 @@
 % 英文封面
 \newcommand\make@entitle{%
     \begin{titlepage}%
+        \phantomsection  % 创建一个标记点
+        \addcontentsline{toc}{chapter}{Title Page}  % 将"Title Page"添加到目录中
+
         \vpostext{3.9cm}{\setfontsize{15pt}{A Dissertation Submitted for the Doctor Degree}}%
         \vpostext{5.9cm}{\setfontsize{22pt}\textbf{\hnu@entitle}}%
         % 使用TikZ在页面的左下角绘制研究生信息
@@ -585,42 +596,45 @@
 
 % 定义命令\make@statement，用于生成学位论文原创性声明和版权使用授权书页
 \newcommand\make@statement{
-  \begin{titlepage}% % 开始封面页环境
-    \newgeometry{left=3.3cm,right=3.3cm,top=3.5cm, bottom=3cm}  % 设置页面边距
-    \thispagestyle{plain} % 设定当前页面样式为plain，即无页眉页脚的样式
-    \pagenumbering{gobble}  % 禁止页码显示
-    \setcounter{page}{1}    % 设置当前页码为1
-    \setfontsize{12.5pt}[20pt]  % 设置正文字体为12pt，行距为20pt
-    \vspace*{-0.15cm} % 调整页面上方的垂直间距
-    \begin{center}
-      \sffamily % 设置无衬线字体
-      \setfontsize{18pt}  % 设置标题字体为18pt
-      \textbf{学位论文原创性声明} % 居中显示“学位论文原创性声明”
-    \end{center}
-    \vskip 0.3cm  % 垂直间距为0.3cm
+    \begin{titlepage}% % 开始封面页环境
+        \phantomsection  % 创建一个标记点
+        \addcontentsline{toc}{chapter}{原创性声明}  % 将"原创性声明"添加到目录中
 
-    % 插入声明内容
-    \hnu@declaretext\par
+        \newgeometry{left=3.3cm,right=3.3cm,top=3.5cm, bottom=3cm}  % 设置页面边距
+        \thispagestyle{plain} % 设定当前页面样式为plain，即无页眉页脚的样式
+        \pagenumbering{gobble}  % 禁止页码显示
+        \setcounter{page}{1}    % 设置当前页码为1
+        \setfontsize{12.5pt}[20pt]  % 设置正文字体为12pt，行距为20pt
+        \vspace*{-0.15cm} % 调整页面上方的垂直间距
+        \begin{center}
+        \sffamily % 设置无衬线字体
+        \setfontsize{18pt}  % 设置标题字体为18pt
+        \textbf{学位论文原创性声明} % 居中显示“学位论文原创性声明”
+        \end{center}
+        \vskip 0.3cm  % 垂直间距为0.3cm
 
-    \vskip 1cm  % 垂直间距为1cm
-    作者签名：\qquad\qquad\qquad\qquad\qquad\quad 日期：\qquad\quad 年\qquad 月\qquad 日
-    \vskip 1cm  % 垂直间距为1cm
+        % 插入声明内容
+        \hnu@declaretext\par
 
-    \begin{center}
-      \sffamily % 设置无衬线字体
-      \setfontsize{18pt}\textbf{学位论文版权使用授权书} % 居中显示“学位论文版权使用授权书”
-    \end{center}  
-    \vskip 0.3cm  % 垂直间距为0.3cm
+        \vskip 1cm  % 垂直间距为1cm
+        作者签名：\qquad\qquad\qquad\qquad\qquad\quad 日期：\qquad\quad 年\qquad 月\qquad 日
+        \vskip 1cm  % 垂直间距为1cm
 
-    % 插入授权书内容
-    \hnu@authorization\par
-    \vskip 1cm  % 垂直间距为1cm
+        \begin{center}
+        \sffamily % 设置无衬线字体
+        \setfontsize{18pt}\textbf{学位论文版权使用授权书} % 居中显示“学位论文版权使用授权书”
+        \end{center}  
+        \vskip 0.3cm  % 垂直间距为0.3cm
 
-    作者签名：\qquad\qquad\qquad\qquad\qquad\quad 日期：\qquad\quad 年\qquad 月\qquad 日
-    
-    导师签名：\qquad\qquad\qquad\qquad\qquad\quad 日期：\qquad\quad 年\qquad 月\qquad 日
-    \restoregeometry
-  \end{titlepage} % 结束封面页环境
+        % 插入授权书内容
+        \hnu@authorization\par
+        \vskip 1cm  % 垂直间距为1cm
+
+        作者签名：\qquad\qquad\qquad\qquad\qquad\quad 日期：\qquad\quad 年\qquad 月\qquad 日
+        
+        导师签名：\qquad\qquad\qquad\qquad\qquad\quad 日期：\qquad\quad 年\qquad 月\qquad 日
+        \restoregeometry
+    \end{titlepage} % 结束封面页环境
 }
 
 % 摘要、关键字
@@ -629,7 +643,7 @@
     \cleardoublepage  % 插入双页清除符号，确保摘要从奇数页开始
     \pagenumbering{roman} % 使用罗马数字页码
     \hnu@chapter{\hnu@abstractname}%  % 调用自定义的hnu@chapter命令，插入“摘要”标题
-    \addcontentsline{toc}{chapter}{\hnu@abstractname} % 将“摘要”标题添加到目录中，作为章级别
+    % \addcontentsline{toc}{chapter}{\hnu@abstractname} % 将“摘要”标题添加到目录中，作为章级别
     \setcounter{page}{1}  % 设置当前页码为1
     \thispagestyle{empty}   % 清楚当前页面的页眉和页脚
   }{}
@@ -641,14 +655,14 @@
         \ctexset{chapter/format=\centering\rmfamily\bfseries\setfontsize{18pt}}%  % 设置英文摘要标题的字体为18pt，加粗，居中，使用衬线字体
         \hnu@chapter[Abstract]{\hnu@enabstractname}% % 插入“Abstract”标题
     \endgroup % 结束组
-    \addcontentsline{toc}{chapter}{\hnu@enabstractname} % 将“Abstract”标题添加到目录中，作为章级别
+    % \addcontentsline{toc}{chapter}{\hnu@enabstractname} % 将“Abstract”标题添加到目录中，作为章级别
     \thispagestyle{empty}
   }{}
 
 % 定义总结与展望环境
 \newenvironment{summary}{%
     \hnu@chapter{\hnu@summaryname}% % 插入“总结与展望”标题
-    \addcontentsline{toc}{chapter}{\hnu@summaryname}  % 将“总结与展望”标题添加到目录中，作为章级别
+    % \addcontentsline{toc}{chapter}{\hnu@summaryname}  % 将“总结与展望”标题添加到目录中，作为章级别
 }{}
 
 % 定义致谢环境
@@ -713,13 +727,13 @@
 \renewcommand\listoffigures{%
     \clearpage  % 插入分页符，确保图目录从新页开始
     \hnu@chapter{\listfigurename}%  % 插入“插入索引”作为章级标题
-    \addcontentsline{toc}{chapter}{\listfigurename} % 将图目录标题添加到目录中，作为章级别
+    % \addcontentsline{toc}{chapter}{\listfigurename} % 将图目录标题添加到目录中，作为章级别
     \@starttoc{lof}}  % 生成图目录内容
 % 为了让图目录另页起，重新定义 \cs{listoffigures}
 \renewcommand\listoftables{%
     \clearpage % 插入分页符，确保表目录从新页开始
     \hnu@chapter{\listtablename}% % 插入“表目录”作为章级标题
-    \addcontentsline{toc}{chapter}{\listtablename}  % 将表目录标题添加到目录中，作为章级别
+    % \addcontentsline{toc}{chapter}{\listtablename}  % 将表目录标题添加到目录中，作为章级别
     \@starttoc{lot}}  % 生成表目录内容
 
 % 定义notation环境，用于生成符号说明部分
