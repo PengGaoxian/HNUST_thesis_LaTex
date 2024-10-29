@@ -1,4 +1,4 @@
-# 湖南科技大学硕士学位论文 LaTeX 模板
+# 湖南科技大学博士学位论文 LaTeX 模板
 
 [![Compile and publish the release](https://github.com/yusanshi/hnuthesis/actions/workflows/main.yml/badge.svg)](https://github.com/yusanshi/hnuthesis/actions/workflows/main.yml) [![GitHub Releases](https://img.shields.io/github/v/release/yusanshi/hnuthesis)](https://github.com/yusanshi/hnuthesis/releases/latest)
 
