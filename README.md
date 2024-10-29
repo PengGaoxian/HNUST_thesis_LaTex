@@ -2,7 +2,7 @@
 
 [![Compile and publish the release](https://github.com/yusanshi/hnuthesis/actions/workflows/main.yml/badge.svg)](https://github.com/yusanshi/hnuthesis/actions/workflows/main.yml) [![GitHub Releases](https://img.shields.io/github/v/release/yusanshi/hnuthesis)](https://github.com/yusanshi/hnuthesis/releases/latest)
 
-本项目是湖南科技大学硕士学位论文 LaTeX 模板 hnuthesis，按照《[湖南科技大学研究生学位论文撰写规范](https://yyxy.hnust.edu.cn/rcpy/yjspy/yjspygl/f2d23a836a874cdba2b09b4ec5e662ad.htm)》的要求编写（**个人能力、精力有限，不保证完全符合规范，_Use at your own risk!_**）。
+本项目是湖南科技大学博士学位论文 LaTeX 模板 hnuthesis，按照《[湖南科技大学研究生学位论文撰写规范](https://yyxy.hnust.edu.cn/rcpy/yjspy/yjspygl/f2d23a836a874cdba2b09b4ec5e662ad.htm)》的要求编写（**个人能力、精力有限，不保证完全符合规范，_Use at your own risk!_**）。
 
 下载地址：[GitHub Releases](https://github.com/PengGaoxian/HNUST_thesis_LaTex)、[Overleaf](https://cn.overleaf.com/read/mcfvqsyrtrxj#373a4c)。
 
