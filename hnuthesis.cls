@@ -292,12 +292,9 @@
 
 % 章节、段落、页眉、页脚
 \renewcommand\chapter{%
-  % 判断是否为openright模式，如果是，则章节从右页开始
-  \if@openright\cleardoublepage\else\clearpage\fi
-  % 设置行距为20pt
-  \setlength{\baselineskip}{20pt}
-  % 设置中文CJK字符的间隔为0.5pt，允许根据行间距动态调整
-  \renewcommand{\CJKglue}{\hskip 0.5pt plus \baselineskip}
+  \if@openright\cleardoublepage\else\clearpage\fi % 判断是否为openright模式，如果是，则章节从右页开始
+  \setlength{\baselineskip}{20pt} % 设置行距为20pt
+  % \renewcommand{\CJKglue}{\hskip 0.5pt plus \baselineskip} % 设置中文CJK字符的间隔为0.5pt，允许根据行间距动态调整
   \global\@topnum\z@  % 禁止在章节页顶部放置浮动体
   \@afterindenttrue   % 章节后的第一段缩进
   \secdef\@chapter\@schapter  % 使用secdef定义章节命令，分别处理带编号和不带编号的章节
