@@ -201,10 +201,10 @@
 % 使用geometry宏包设置页面尺寸和边距
 \geometry{
     paper=a4paper,  % 纸张尺寸为A4
-    top=2.2cm, bottom=2.2cm,  % 上下边距为2.2cm
+    top=3cm, bottom=3cm,  % 上下边距为3cm
     left=2.5cm, right=2.5cm,  % 左右边距为2.5cm
     headheight=0.4cm,   % 页眉高度为0.4cm 
-    headsep=1.3cm,  % 页眉与正文的距离为1.3cm
+    headsep=1.45cm,  % 页眉与正文的距离为1.45cm
     footskip=1.1cm  % 页脚与正文的距离为1.1cm
 }
 
@@ -216,9 +216,9 @@
 \fancypagestyle{hnu@headings}{%
   \fancyhf{}%                                       % 清空默认的页眉页脚设置
 %   \fancyhead[CE]{\setfontsize{9pt}\hnu@title}%      % 左页的中央页眉内容为论文标题，字号9pt
-  \fancyhead[CE]{\setfontsize{9pt}\leftmark}%      % 左页的中央页眉内容为论文章名称，字号9pt
-  \fancyhead[CO]{\setfontsize{9pt}\hnu@yemeiname}   % 右页的中央页眉内容为yemeiname，字号9pt
-  \fancyfoot[C]{\setfontsize{9pt}\thepage}          % 页脚中央显示页码，字号9pt
+  \fancyhead[CE]{\setfontsize{10.5pt}\leftmark}%      % 左页的中央页眉内容为论文章名称，字号五号
+  \fancyhead[CO]{\setfontsize{10.5pt}\hnu@yemeiname}   % 右页的中央页眉内容为yemeiname，字号五号
+  \fancyfoot[C]{\setfontsize{10.5pt}\thepage}          % 页脚中央显示页码，字号五号
   \fancyheadoffset[LO,LE]{3mm}                      % 左侧页眉（LO：左侧页眉奇数页，LE：左侧页眉偶数页）向右偏移量为3mm
   \fancyheadoffset[RO,RE]{-3mm}                     % 右页页眉（RO：右侧页眉奇数页，RE：右侧页眉偶数页）向左偏移量为-3mm
 
