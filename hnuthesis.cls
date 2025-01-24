@@ -975,8 +975,8 @@
     \endgroup
 }
 
-% 重定义参考文献字体，使用正常字体，大小为12pt，行距为20pt
-\renewcommand\bibfont{\normalfont\fontsize{12pt}{20pt}\selectfont}
+% 重定义参考文献字体，使用正常字体，大小为五号字体，行距为13pt
+\renewcommand\bibfont{\normalfont\fontsize{10.5pt}{13pt}\selectfont}
 \setlength{\bibsep}{0bp}  % 设置参考文献条目之间的垂直间距为0bp
 \setlength{\bibhang}{2\ccwd}  % 设置参考文献条目的缩进为两个中文字符宽度
 % 重定义参考文献标签的格式
